@@ -59,8 +59,7 @@ public class BpmnDeployer implements Deployer {
     @Override
     public void deploy(DeploymentEntity deployment,
                        Map<String, Object> deploymentSettings) {
-        log.debug("Processing deployment {}",
-                  deployment.getName());
+        log.debug("Processing deployment {}", deployment.getName());
 
         // The ParsedDeployment represents the deployment, the process definitions, and the BPMN
         // resource, parse, and model associated with each process definition.
@@ -71,6 +70,7 @@ public class BpmnDeployer implements Deployer {
 
         bpmnDeploymentHelper.verifyProcessDefinitionsDoNotShareKeys(parsedDeployment.getAllProcessDefinitions());
 
+        //设置流程的tenantId、resourceName
         bpmnDeploymentHelper.copyDeploymentValuesToProcessDefinitions(
                 parsedDeployment.getDeployment(),
                 parsedDeployment.getAllProcessDefinitions());
@@ -91,6 +91,7 @@ public class BpmnDeployer implements Deployer {
                                   mapOfNewProcessDefinitionToPreviousVersion);
             dispatchProcessDefinitionEntityInitializedEvent(parsedDeployment);
         } else {
+            //从数据库中查询数据
             makeProcessDefinitionsConsistentWithPersistedVersions(parsedDeployment);
         }
 

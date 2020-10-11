@@ -82,7 +82,7 @@ class IntegrationContextImplTest {
                                              Arguments.of(null, null),
                                              Arguments.of(Currency.getInstance("USD"), "USD"),
                                              Arguments.of(Date.from(instant), Date.from(instant)),
-                                             Arguments.of(LocalDate.ofInstant(instant, ZoneOffset.UTC), LocalDate.ofInstant(instant, ZoneOffset.UTC)),
+                                             Arguments.of(LocalDateTime.ofInstant(instant, ZoneOffset.UTC), LocalDateTime.ofInstant(instant, ZoneOffset.UTC)),
                                              Arguments.of(LocalDateTime.ofInstant(instant, ZoneOffset.UTC), LocalDateTime.ofInstant(instant, ZoneOffset.UTC)),
                                              Arguments.of(singletonList("item"), singletonList("item")),
                                              Arguments.of(singletonList(singletonMap("key", "value")), singletonList(singletonMap("key", "value"))),

@@ -21,6 +21,7 @@ import static java.util.Collections.synchronizedMap;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.concurrent.BlockingDeque;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,6 +51,7 @@ public class DefaultDeploymentCache<T> implements DeploymentCache<T> {
           // true will keep the 'access-order', which is needed to have a real LRU cache
           private static final long serialVersionUID = 1L;
 
+          @Override
           protected boolean removeEldestEntry(Map.Entry<String, T> eldest) {
             boolean removeEldest = size() > limit;
             if (removeEldest && logger.isTraceEnabled()) {

@@ -44,7 +44,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 @EnableScheduling
 public class DemoApplication implements CommandLineRunner {
 
-    private Logger logger = LoggerFactory.getLogger(DemoApplication.class);
+    private final Logger logger = LoggerFactory.getLogger(DemoApplication.class);
 
     private final ProcessRuntime processRuntime;
 
@@ -77,6 +77,9 @@ public class DemoApplication implements CommandLineRunner {
 
     }
 
+    /**
+     *  这里是流程实例启动的关键
+     */
     @Scheduled(initialDelay = 1000, fixedDelay = 5000)
     public void processText() {
 

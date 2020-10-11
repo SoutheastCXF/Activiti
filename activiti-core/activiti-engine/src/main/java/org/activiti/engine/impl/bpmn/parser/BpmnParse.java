@@ -148,6 +148,7 @@ public class BpmnParse implements BpmnXMLConstants {
         encoding = processEngineConfiguration.getXmlEncoding();
       }
 
+      //将流程文档转化为Activiti内部表示
       if (encoding != null) {
         bpmnModel = converter.convertToBpmnModel(streamSource, validateSchema, enableSafeBpmnXml, encoding);
       } else {
